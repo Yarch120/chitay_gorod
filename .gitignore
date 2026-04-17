@@ -205,3 +205,47 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Allure reports (ваши папки с отчетами)
+allure-results/
+allure-report/
+final-report/
+results/
+
+# Selenium драйверы (бинарные файлы)
+chromedriver.exe
+geckodriver.exe
+msedgedriver.exe
+*.driver
+
+# Логи тестов
+*.log
+test_logs/
+
+# Временные файлы при запуске
+*.tmp
+*.temp
+
+# VS Code (раскомментируйте, если хотите исключить)
+.vscode/
+*.code-workspace
+
+# PyCharm (раскомментируйте, если нужно)
+.idea/
+*.iml
+
+# Файлы с секретами/токенами (ВАЖНО!)
+config_local.py
+secrets.py
+*.secret
+*.key
+.env.local
+.env.*.local
+
+# Данные браузеров
+selenium-screenshots/
+screenshots/
+
+# pytest-xdist временные файлы
+.pytest_cache/
+.gw*
