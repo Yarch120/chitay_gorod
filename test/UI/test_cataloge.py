@@ -1,6 +1,7 @@
 import allure
 import pytest
 from Page import Main_page
+from config import Config
 
 
 @allure.suite("Cataloge page")
@@ -8,7 +9,7 @@ from Page import Main_page
 @allure.title("Проверка поиска по названию")
 @allure.severity(allure.severity_level.BLOCKER)
 def test_find_books_by_name(main_page):
-    main_page.open('https://www.chitai-gorod.ru/')
+    main_page.open(Config.BASE_URL)
     main_page.waiting_load()
     main_page.close_popups()
     search_inputs = main_page.find('#app-search')
@@ -33,7 +34,7 @@ def test_find_books_by_name(main_page):
 @allure.title("Проверка поиска по автору")
 @allure.severity(allure.severity_level.BLOCKER)
 def test_find_books_by_autor(main_page):
-    main_page.open('https://www.chitai-gorod.ru/')
+    main_page.open(Config.BASE_URL)
     main_page.waiting_load()
     main_page.close_popups()
     search_inputs = main_page.find('#app-search')
@@ -58,7 +59,7 @@ def test_find_books_by_autor(main_page):
 @allure.title("Проверка открытия каталога")
 @allure.severity(allure.severity_level.BLOCKER)
 def test_find_cataloge(main_page):
-    main_page.open('https://www.chitai-gorod.ru/')
+    main_page.open(Config.BASE_URL)
     main_page.waiting_load()
     main_page.close_popups()
     main_page.click('.header-sticky__catalog-menu')

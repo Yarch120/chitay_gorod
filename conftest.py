@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from Page import Main_page
+from config import Config
 
 
 @pytest.fixture
@@ -26,7 +27,7 @@ def product_page(main_page):
     """
     ПРЕДУСЛОВИЕ: переход на страницу товара
     """
-    main_page.driver.get("https://www.chitai-gorod.ru/product/python-polnoe-rukovodstvo-2893579")
+    main_page.driver.get(f"{Config.BASE_URL}/product/python-polnoe-rukovodstvo-{Config.BOOK_ID}")
     main_page.waiting_load()
     return main_page
 
@@ -35,7 +36,7 @@ def product_page(main_page):
 def empty_cart_page(driver):
     """ПРЕДУСЛОВИЕ: открытая пустая корзина"""
     page = Main_page(driver)
-    page.driver.get("https://www.chitai-gorod.ru/cart")
+    page.driver.get(f"{Config.BASE_URL}/cart")
     page.waiting_load()
     return page
 
@@ -45,7 +46,7 @@ def cart_page_with_specific_product(main_page):
     """
     ПРЕДУСЛОВИЕ: корзина с конкретным товаром, товар выбирается при вводе прямого URL на страницу товара
     """
-    main_page.driver.get("https://www.chitai-gorod.ru/product/python-polnoe-rukovodstvo-2893579")
+    main_page.driver.get(f"{Config.BASE_URL}/product/python-polnoe-rukovodstvo-{Config.BOOK_ID}")
     main_page.waiting_load()
     try:
         add_button = main_page.wait.until(
@@ -66,7 +67,7 @@ def cart_page_with_twice_items(main_page):
     """
     ПРЕДУСЛОВИЕ: корзина с товаром в количестве 2 штуки
     """
-    main_page.driver.get("https://www.chitai-gorod.ru/product/python-polnoe-rukovodstvo-2893579")
+    main_page.driver.get(f"{Config.BASE_URL}/product/python-polnoe-rukovodstvo-{Config.BOOK_ID}")
     main_page.waiting_load()
     try:
         add_button = main_page.wait.until(
@@ -75,7 +76,7 @@ def cart_page_with_twice_items(main_page):
         add_button.click()
         main_page.waiting_load()
     except Exception as e:
-        print(f"⚠️ Не удалось добавить товар: {e}")
+        print(f"Не удалось добавить товар: {e}")
     main_page.click('[data-testid-button-header="cart"]')
     main_page.waiting_load()
     main_page.wait.until(EC.url_contains("/cart"))

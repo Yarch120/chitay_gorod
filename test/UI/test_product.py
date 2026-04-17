@@ -1,6 +1,7 @@
 import allure
 import pytest
 from Page import Main_page
+from config import Config
 
 
 @allure.suite("Product page")

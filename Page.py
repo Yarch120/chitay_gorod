@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from config import Config
 
 
 @allure.epic("Тестирование главной страницы интернет-магазина")
@@ -21,8 +22,10 @@ class Main_page:
         self.wait = WebDriverWait(self.driver, 20)
 
     @allure.step("Открытие страницы магазина {URL}")
-    def open(self, URL: str):
-        """Открывает страницу по URL.Необходимо ввести URL"""
+    def open(self, URL: str = None):
+        """Открывает страницу по URL. Если URL не указан, использует BASE_URL из config"""
+        if URL is None:
+            URL = Config.BASE_URL
         self.driver.get(URL)
 
     @allure.step("Кликнуть по элементу {locator}")
@@ -87,6 +90,7 @@ class Main_page:
     @allure.step("Ожидание изменения URL")
     def waiting_load_cart(self):
         """Ожидает изменение URL при переходе в корзину"""
+        self.wait.until(EC.url_contains("/cart"))
         self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '.cart, .cart-page, .basket-page, [data-testid="cart-page"]')))
 
     @allure.step("Получить количество товаров в корзине")

@@ -1,6 +1,7 @@
 import allure
 import pytest
 from Page import Main_page
+from config import Config
 
 
 @allure.suite("Cart page")
@@ -9,7 +10,7 @@ from Page import Main_page
 @allure.severity(allure.severity_level.BLOCKER)
 def test_open_cart(main_page):
     """сайт открывается при переходе по ссылке https://www.chitai-gorod.ru/cart"""
-    main_page.open('https://www.chitai-gorod.ru/cart')
+    main_page.open(f"{Config.BASE_URL}/cart")
     main_page.close()
 
 
