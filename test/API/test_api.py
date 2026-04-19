@@ -2,6 +2,7 @@ import allure
 import pytest
 import requests
 from config import Config
+pytestmark = pytest.mark.api
 
 
 @allure.suite("API тестирование Читай-город")

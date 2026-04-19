@@ -1,0 +1,21 @@
+
+# Скопируйте этот файл в config.py и добавьте реальные данные
+
+class Config:
+    # Базовые URL
+    BASE_URL = "https://www.chitai-gorod.ru"
+    API_BASE_URL = "https://web-agr.chitai-gorod.ru"
+    
+    # Тестовые данные
+    BOOK_ID = 2893579
+    CART_ID = 257981290
+    
+    # Токен авторизации (получите реальный из Postman или API)
+    TOKEN = "your_token_here"
+    
+    # Заголовки для API запросов
+    HEADERS = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": f"Bearer {TOKEN}"
+    }

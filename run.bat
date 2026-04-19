@@ -10,7 +10,7 @@ if "%1"=="ui" (
     echo ========================================
     echo Running UI tests only...
     echo ========================================
-    pytest test/ui/ --alluredir=%results% -v
+    pytest -m "ui" --alluredir=%results% -v
     goto generate
 )
 
@@ -18,7 +18,7 @@ if "%1"=="api" (
     echo ========================================
     echo Running API tests only...
     echo ========================================
-    pytest test/api/ --alluredir=%results% -v
+    pytest  -m "api" --alluredir=%results% -v
     goto generate
 )
 
@@ -26,13 +26,8 @@ if "%1"=="all" (
     echo ========================================
     echo Running ALL tests...
     echo ========================================
-    pytest test/ --alluredir=%results% -v
+    pytest --alluredir=%results% -v
     goto generate
-)
-
-
-if exist %rep_history% (
-    xcopy %rep_history% %results%\history /E /I /Y >nul
 )
 
 echo ========================================

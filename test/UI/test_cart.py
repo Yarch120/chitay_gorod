@@ -2,6 +2,7 @@ import allure
 import pytest
 from Page import Main_page
 from config import Config
+pytestmark = pytest.mark.ui
 
 
 @allure.suite("Cart page")
